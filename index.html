@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>Color</title>
+        <meta charset="utf-8">
+        <style>
+            #i {
+                position:fixed;
+                bottom:0;
+                right:0;
+                opacity:0;
+                transition: opacity 0.3s ease;
+                margin:10px;
+            }
+            #i:hover{
+                opacity:1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="d">
+            <input id="i" type="range" min="0" max="200" title="속도(왼쪽으로 갈수록 빨라짐)">
+        </div>
+        <script>
+            function c() {
+                h++;
+                if (h > 360) h = 0;
+                document.body.style.backgroundColor = `hsl(${h} 80% 50%)`
+            };
+            let h = 0;
+            let t=setInterval(c,100);
+            document.getElementById("i").oninput = e => {
+                clearInterval(t);
+                t=setInterval(c,e.target.value)
+            }
+        </script>
+    </body>
+</html>
