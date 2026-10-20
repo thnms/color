@@ -5,15 +5,24 @@
         <meta charset="utf-8">
         <style>
             #i {
-                position:fixed;
-                bottom:0;
-                right:0;
-                opacity:0;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                opacity: 1;
                 transition: opacity 0.3s ease;
-                margin:10px;
+                margin: 10px;
+                animation: initialFade 1s ease 1s forwards;
             }
-            #i:hover{
-                opacity:1;
+
+            #i:hover {
+                opacity: 1;
+                animation: none;
+            }
+
+            @keyframes initialFade {
+                to {
+                    opacity: 0;
+                }
             }
         </style>
     </head>
@@ -25,14 +34,15 @@
             function c() {
                 h++;
                 if (h > 360) h = 0;
-                document.body.style.backgroundColor = `hsl(${h} 80% 50%)`
-            };
+                document.body.style.backgroundColor = `hsl(${h} 80% 50%)`;
+            }
+
             let h = 0;
-            let t=setInterval(c,100);
+            let t = setInterval(c,100);
             document.getElementById("i").oninput = e => {
                 clearInterval(t);
-                t=setInterval(c,e.target.value)
-            }
+                t = setInterval(c,e.target.value);
+            };
         </script>
     </body>
 </html>
